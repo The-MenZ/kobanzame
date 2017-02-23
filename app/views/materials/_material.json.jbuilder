@@ -1,0 +1,2 @@
+json.extract! material, :id, :content_type, :content_value, :status, :internal_comment, :external_comment, :created_user_id, :updated_user_id, :active, :created_at, :updated_at
+json.url material_url(material, format: :json)
