@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 #    debugger
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to the ARSR"
+      flash[:success] = "Welcome to the KOBANZAME"
       redirect_to @user
     else
       render 'new'

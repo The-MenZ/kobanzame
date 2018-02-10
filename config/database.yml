@@ -51,4 +51,4 @@ production:
   <<: *default
   database: kobanzame_production
   username: kobanzame
-  password: <%= ENV['ARSR_DATABASE_PASSWORD'] %>
+  password: <%= ENV['KOBANZAME_DATABASE_PASSWORD'] %>
