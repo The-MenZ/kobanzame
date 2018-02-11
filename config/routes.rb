@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :orders
+  end
+
   resources :products
   get 'top/index'
 

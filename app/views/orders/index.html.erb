@@ -11,6 +11,7 @@
       <div class="panel-footer">
         <p>
           注文名：<%= order.title %><br>
+          発注日時：<%= I18n.l order.created_at %><br>
           進捗：<%= order.progress_i18n %><br>
         </p>
       </div>

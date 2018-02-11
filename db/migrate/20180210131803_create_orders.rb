@@ -6,7 +6,7 @@ class CreateOrders < ActiveRecord::Migration[5.0]
       t.string :title, null: false
       t.text :comment
       t.string :recipient_name, null: false
-      t.integer :tel, null: false
+      t.string :tel, null: false
       t.integer :postal_code, null: false
       t.string :address_1, null: false
       t.string :address_2, null: false
