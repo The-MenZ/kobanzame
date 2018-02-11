@@ -5,7 +5,7 @@
 #  id             :integer          not null, primary key
 #  user_id        :integer          not null
 #  design_id      :integer          not null
-#  order_name     :string(255)      not null
+#  title          :string(255)      not null
 #  comment        :text(65535)
 #  recipient_name :integer          not null
 #  tel            :integer          not null
