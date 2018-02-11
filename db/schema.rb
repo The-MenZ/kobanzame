@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180210162454) do
+ActiveRecord::Schema.define(version: 20180211115129) do
 
   create_table "designs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                  null: false
@@ -35,10 +35,10 @@ ActiveRecord::Schema.define(version: 20180210162454) do
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                      null: false
-    t.integer  "design_id",                    null: false
+    t.integer  "product_id",                   null: false
     t.string   "title",                        null: false
     t.text     "comment",        limit: 65535
-    t.integer  "recipient_name",               null: false
+    t.string   "recipient_name",               null: false
     t.integer  "tel",                          null: false
     t.integer  "postal_code",                  null: false
     t.string   "address_1",                    null: false
@@ -46,6 +46,19 @@ ActiveRecord::Schema.define(version: 20180210162454) do
     t.integer  "progress",                     null: false
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+  end
+
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "design_id"
+    t.string   "name"
+    t.text     "description",     limit: 65535
+    t.integer  "price"
+    t.integer  "product_status"
+    t.boolean  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

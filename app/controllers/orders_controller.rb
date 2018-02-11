@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  around_action :set_transaction, only: [:create]
 
   def index
     @orders = current_user.orders.all
@@ -9,8 +10,14 @@ class OrdersController < ApplicationController
     @design.user_id = current_user.id
     @design.save
     @order = Order.new(order_params)
+    @product = Product.new
+    @product.name = @order.title
+    @product.design_id = @design.id
+    @product.created_user_id = current_user.id
+    @product.updated_user_id = current_user.id
+    @product.save
     @order.user_id = current_user.id
-    @order.design_id = @design.id
+    @order.product_id = @product.id
     @order.save
   end
 
