@@ -4,10 +4,10 @@
 #
 #  id             :integer          not null, primary key
 #  user_id        :integer          not null
-#  design_id      :integer          not null
+#  product_id     :integer          not null
 #  title          :string(255)      not null
 #  comment        :text(65535)
-#  recipient_name :integer          not null
+#  recipient_name :string(255)      not null
 #  tel            :integer          not null
 #  postal_code    :integer          not null
 #  address_1      :string(255)      not null
@@ -34,7 +34,7 @@ class Order < ApplicationRecord
 
   # = Association
   belongs_to :user
-  belongs_to :design
+  belongs_to :product
 
   # = Validation
   # validates :title, presence: true, length: { maximum: 120 }
@@ -47,11 +47,14 @@ class Order < ApplicationRecord
     self.progress ||= :ordered
   end
 
+  # = Instance method
+
   def can_cansel?
     ordered? || design_checking? || design_accepted? || work_stopped?
   end
 
-  # = Instance method
+  # = Private method
+
   private
     def progress_transition(destination, allowed_progress = [])
     end
