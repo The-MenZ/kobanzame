@@ -25,3 +25,4 @@
 /.env
 ._*
 /.byebug_history
+/public/uploads/*
