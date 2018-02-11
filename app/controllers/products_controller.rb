@@ -68,7 +68,14 @@ class ProductsController < ApplicationController
     render 'my_index'
   end
 
- private
+  # GET /my_products/1
+  # GET /my_products/1.json
+  def my_show
+    @product = Product.find(params[:id])
+    render 'my_show'
+  end
+
+private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
