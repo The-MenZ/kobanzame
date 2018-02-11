@@ -5,7 +5,7 @@
 #  id             :integer          not null, primary key
 #  user_id        :integer          not null
 #  design_id      :integer          not null
-#  order_name     :string(255)      not null
+#  title          :string(255)      not null
 #  comment        :text(65535)
 #  recipient_name :integer          not null
 #  tel            :integer          not null
@@ -34,7 +34,7 @@ class Order < ApplicationRecord
 
   # = Association
   belongs_to :user
-  has_one :design
+  belongs_to :design
 
   # = Validation
   # validates :title, presence: true, length: { maximum: 120 }

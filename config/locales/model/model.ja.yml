@@ -1,0 +1,17 @@
+---
+ja:
+  activerecord:
+    models:
+      order: 発注
+    attributes:
+      order:
+        title: 注文名（作品名）
+        comment: コメント
+        recipient_name: 受取人名
+        tel: 電話番号
+        postal_code: 郵便番号
+        address_1: 都道府県、市町村
+        address_2: 番地、建物名
+        progress: 進捗
+      design:
+        design_file: 図面
