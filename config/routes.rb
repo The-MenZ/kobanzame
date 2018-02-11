@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :products
+  get '/my_products', to: 'products#my_index'
   get 'top/index'
 
   get 'password_resets/new'
