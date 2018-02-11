@@ -29,3 +29,8 @@ ja:
         ship_preparing: 発送準備中
         shipped: 発送完了
         canceled: キャンセル
+    product:
+      product_status:
+        private_sale: 製作者限定販売
+        public_sale: 一般販売
+        sale_stopped: 販売停止

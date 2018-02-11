@@ -35,6 +35,7 @@ class Order < ApplicationRecord
   # = Association
   belongs_to :user
   belongs_to :product
+  has_one :design, through: :product
 
   # = Validation
   # validates :title, presence: true, length: { maximum: 120 }
@@ -54,7 +55,11 @@ class Order < ApplicationRecord
   end
 
   def design_image
-    self.product.design.design_file
+    self.design.design_file
+  end
+
+  def shipping_address
+    "〒#{postal_code} #{address_1} #{address_2} #{recipient_name} #{tel}"
   end
 
   # = Private method
