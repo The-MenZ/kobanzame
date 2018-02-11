@@ -34,7 +34,7 @@ class Order < ApplicationRecord
 
   # = Association
   belongs_to :user
-  has_one :design
+  belongs_to :design
 
   # = Validation
   # validates :title, presence: true, length: { maximum: 120 }
