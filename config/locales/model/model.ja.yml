@@ -19,7 +19,7 @@ ja:
   enums:
     order:
       progress:
-        ordered: 発注
+        ordered: 発注中
         design_checking: デザインチェック中
         design_rejected: デザイン差戻し
         design_accepted: デザインチェック完了
