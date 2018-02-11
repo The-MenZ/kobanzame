@@ -21,16 +21,15 @@ class Order < ApplicationRecord
   # = Module & Configure
   enum progress: {
     ordered: 0,
-    design_checking: 10,
-    design_rejected: 11,
-    design_accepted: 12,
-    working: 20,
-    work_stopped: 21,
-    work_completed: 22,
-    ship_preparing: 30,
-    ship_stopped: 31,
-    shipped: 32,
-    canceled: 99
+    design_checking: 100,
+    design_rejected: 110,
+    design_accepted: 120,
+    working: 200,
+    work_stopped: 210,
+    work_completed: 220,
+    ship_preparing: 300,
+    shipped: 310,
+    canceled: 900,
   }
 
   # = Association
