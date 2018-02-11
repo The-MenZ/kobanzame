@@ -15,3 +15,17 @@ ja:
         progress: 進捗
       design:
         design_file: 図面
+
+  enums:
+    order:
+      progress:
+        ordered: 発注
+        design_checking: デザインチェック中
+        design_rejected: デザイン差戻し
+        design_accepted: デザインチェック完了
+        working: 作業中
+        work_stopped: 作業時差戻し
+        work_completed: 作業完了
+        ship_preparing: 発送準備中
+        shipped: 発送完了
+        canceled: キャンセル

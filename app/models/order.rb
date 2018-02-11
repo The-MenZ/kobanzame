@@ -53,6 +53,10 @@ class Order < ApplicationRecord
     ordered? || design_checking? || design_accepted? || work_stopped?
   end
 
+  def design_image
+    self.product.design.design_file
+  end
+
   # = Private method
 
   private
