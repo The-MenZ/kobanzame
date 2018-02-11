@@ -2,7 +2,7 @@
 
 one:
   design_id: 1
-  product_name: MyString
+  name: MyString
   description: MyText
   price: 1
   product_status: 1
@@ -12,7 +12,7 @@ one:
 
 two:
   design_id: 1
-  product_name: MyString
+  name: MyString
   description: MyText
   price: 1
   product_status: 1
