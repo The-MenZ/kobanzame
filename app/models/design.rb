@@ -18,6 +18,8 @@ class Design < ApplicationRecord
 
   # = Association
   belongs_to :order, optional: true
+  has_many :product
+
 
   # = Validation
   # validates :title, presence: true, length: { maximum: 120 }
