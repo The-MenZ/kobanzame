@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
   # GET /my_products
   # GET /my_products.json
   def my_index
-    @products = Product.joins(:design).where('user_id = ?', current_user.id)
+    @products = Product.joins(:design).where(designs: {user_id: current_user.id})
     render 'my_index'
   end
 
