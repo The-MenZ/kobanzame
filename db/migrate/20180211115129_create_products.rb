@@ -7,7 +7,7 @@ class CreateProducts < ActiveRecord::Migration[5.0]
       t.integer :price
       t.integer :product_status
       t.boolean :active
-      t.int :created_user_id
+      t.integer :created_user_id
       t.integer :updated_user_id
 
       t.timestamps
