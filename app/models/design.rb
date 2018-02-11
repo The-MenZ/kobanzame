@@ -11,6 +11,8 @@
 #
 
 class Design < ApplicationRecord
+  # TODO:素材とか寸法とかのカラムを追加する
+
   # = Module & Configure
   mount_uploader :design_file, DesignFileUploader
 
