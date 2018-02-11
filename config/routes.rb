@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get 'users/new'
   resources :users
 
-  root 'static_pages#home'
+  root 'top#index'
 
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
