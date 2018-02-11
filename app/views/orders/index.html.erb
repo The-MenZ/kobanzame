@@ -6,11 +6,12 @@
   <div class="col col-sm-6 col-xs-12 ">
     <div class="panel panel-default">
       <div class="panel-body text-center">
-        <%= image_tag order.design.design_file.to_s, :size => '255x255', :style => 'object-fit: cover' %>
+        <%= image_tag order.design_image, :size => '255x255', :style => 'object-fit: cover' %>
       </div>
       <div class="panel-footer">
         <p>
-          <%= order.title %>
+          注文名：<%= order.title %><br>
+          進捗：<%= order.progress_i18n %><br>
         </p>
       </div>
     </div>
