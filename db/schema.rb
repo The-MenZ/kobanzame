@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20180210162454) do
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                      null: false
     t.integer  "design_id",                    null: false
-    t.string   "order_name",                   null: false
+    t.string   "title",                        null: false
     t.text     "comment",        limit: 65535
     t.integer  "recipient_name",               null: false
     t.integer  "tel",                          null: false

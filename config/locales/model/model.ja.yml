@@ -5,7 +5,7 @@ ja:
       order: 発注
     attributes:
       order:
-        order_name: 注文名（作品名）
+        title: 注文名（作品名）
         comment: コメント
         recipient_name: 受取人名
         tel: 電話番号
