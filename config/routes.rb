@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
 
   resources :materials
+  resources :orders
   get 'users/new'
   resources :users
 
