@@ -61,7 +61,14 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
+  # GET /my_products
+  # GET /my_products.json
+  def my_index
+    @products = Product.joins(:design).where('user_id = ?', current_user.id)
+    render 'my_index'
+  end
+
+ private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
