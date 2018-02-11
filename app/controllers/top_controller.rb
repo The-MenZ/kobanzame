@@ -2,10 +2,10 @@ class TopController < ApplicationController
   skip_before_action :require_login
   before_action :set_material, only: [:show, :edit, :update, :destroy]
 
-  # GET /materials
-  # GET /materials.json
+  # GET /products
+  # GET /products.json
   def index
-    @materials = Material.all
+    @products = Product.all
   end
 
 end

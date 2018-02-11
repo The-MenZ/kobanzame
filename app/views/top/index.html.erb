@@ -8,15 +8,15 @@
 
 <h3>新着作例</h3>
 <div class="row" style="display: -webkit-flex; display: flex; flex-wrap: wrap;" >
-<% @materials.each do |material| %>
+<% @products.each do |product| %>
   <div class="col col-sm-3 col-xs-6 ">
     <div class="panel panel-default">
       <div class="panel-body text-center">
-        <%= image_tag material.content_value, :size => '127x127', :style => 'object-fit: cover' %>
+        <%= image_tag product.design.design_file, :size => '127x127', :style => 'object-fit: cover' %>
       </div>
       <div class="panel-footer">
         <p>
-          <%= material.external_comment %>
+          <%= product.description %>
         </p>
       </div>
     </div>

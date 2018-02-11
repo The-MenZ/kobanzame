@@ -16,6 +16,7 @@
 #
 
 class Product < ApplicationRecord
+
   # = Module & Configure
   enum product_status: {
     private_sale: 0,
