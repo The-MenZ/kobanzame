@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'top/index'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
   get 'users/new'
   resources :users
 
-  root 'tops#index'
+  root 'top#index'
 
   get '/help', to: 'static_pages#help'
   get '/about', to: 'static_pages#about'
