@@ -28,7 +28,7 @@ class Design < ApplicationRecord
   # end
 
   before_save do
-    self.design_original_filename ||= ''
+    self.design_original_filename ||= design_file.file.original_filename
   end
 
   # = Instance method
