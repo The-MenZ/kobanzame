@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'top/index'
+
   get 'password_resets/new'
 
   get 'password_resets/edit'
 
   resources :materials
+  resources :orders
   get 'users/new'
   resources :users
 

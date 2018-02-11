@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login
+  before_action :check_logged_in
 
   def new
   end
@@ -20,4 +22,11 @@ class SessionsController < ApplicationController
     redirect_to root_url
   end
 
+  private
+    def check_logged_in
+      if logged_in?
+        flash.notice = 'ログイン済みです'
+        redirect_to root_path
+      end
+    end
 end
