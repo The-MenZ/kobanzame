@@ -2,6 +2,7 @@
 
 <h1>Materials</h1>
 
+<!--
 <table>
   <thead>
     <tr>
@@ -35,6 +36,24 @@
     <% end %>
   </tbody>
 </table>
+-->
+
+<div class="row">
+<% @materials.each do |material| %>
+  <div class="col col-sm-6 col-xs-12 ">
+    <div class="panel panel-default">
+      <div class="panel-body text-center">
+        <%= image_tag material.content_value, :size => '255x255', :style => 'object-fit: cover' %>
+      </div>
+      <div class="panel-footer">
+        <p> 
+          <%= material.external_comment %>
+        </p> 
+      </div>
+    </div>
+  </div>
+<% end %>
+</div>
 
 <br>
 
