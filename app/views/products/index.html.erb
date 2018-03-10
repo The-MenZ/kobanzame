@@ -3,21 +3,23 @@
 <h1>Products</h1>
 
 <div class="row" style="display: -webkit-flex; display: flex; flex-wrap: wrap;" >
-<% @products.each do |product| %>
-  <div class="col col-sm-3 col-xs-6 ">
-    <div class="panel panel-default">
-      <div class="panel-body text-center">
-        <%= link_to image_tag(product.design.design_file, :border => '0', :size => '127x127', :style => 'object-fit: cover'), product %>
-      </div>
-      <div class="panel-footer">
-        <p>
-          <%= product.description %>
-        </p>
+  <% @products.each do |product| %>
+    <div class="col col-sm-3 col-xs-6 ">
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+          <%= link_to image_tag(product.design.design_file, :border => '0', :size => '127x127', :style => 'object-fit: cover'), product %>
+        </div>
+        <div class="panel-footer">
+          <p>
+            <%= product.description %>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to '新規追加', new_product_path %>
+

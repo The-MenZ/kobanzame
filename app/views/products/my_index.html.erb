@@ -3,23 +3,25 @@
 <h1>My Products</h1>
 
 <div class="row" style="display: -webkit-flex; display: flex; flex-wrap: wrap;" >
-<% @products.each do |product| %>
-  <div class="col col-sm-3 col-xs-6 ">
-    <div class="panel panel-default">
-      <div class="panel-body text-center">
-        <%= link_to image_tag(product.design.design_file, :border => '0', :size => '127x127', :style => 'object-fit: cover'), "/my_products/" + product.id.to_s %>
-      </div>
-      <div class="panel-footer">
-        <p>
-          <%= product.description %>
-          <%= link_to 'Edit', edit_product_path(product) %></td>
-          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </p>
+  <% @products.each do |product| %>
+    <div class="col col-sm-3 col-xs-6 ">
+      <div class="panel panel-default">
+        <div class="panel-body text-center">
+          <%= link_to image_tag(product.design.design_file, :border => '0', :size => '127x127', :style => 'object-fit: cover'), "/my_products/" + product.id.to_s %>
+        </div>
+        <div class="panel-footer">
+          <p>
+            <%= product.description %>
+            <%= link_to 'Edit', edit_product_path(product) %></td>
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </p>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
 <br>
 
-<%= link_to 'New Product', new_product_path %>
+<%= link_to '新規追加', new_product_path %>
+
