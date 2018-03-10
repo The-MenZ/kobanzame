@@ -64,9 +64,14 @@
       <td><%= User.find(@order.design.user_id).name %></td>
     </tr>
     <tr>
-      <td width="20%" class="active"><strong>図面（プレビュー）</strong></td>
+      <td width="20%" class="active">
+        <strong>図面（プレビュー）</strong><br>
+        <a href="<%= @order.design_image %>" download="<%= @order.design.design_file_identifier %>">
+          <button type="button" class="btn btn-primary">図面ダウンロード</button>
+        </a>
+      </td>
       <td>
-        <%= image_tag @order.design_image, :size => '255x255', :style => 'object-fit: cover' %>
+        <%= image_tag @order.design_image.thumb, :size => '255x255', :style => 'object-fit: cover' %>
       </td>
     </tr>
   </tbody>

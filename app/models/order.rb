@@ -8,7 +8,7 @@
 #  title          :string(255)      not null
 #  comment        :text(65535)
 #  recipient_name :string(255)      not null
-#  tel            :integer          not null
+#  tel            :string(255)      not null
 #  postal_code    :integer          not null
 #  address_1      :string(255)      not null
 #  address_2      :string(255)      not null

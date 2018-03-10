@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20180211115129) do
     t.string   "title",                        null: false
     t.text     "comment",        limit: 65535
     t.string   "recipient_name",               null: false
-    t.integer  "tel",                          null: false
+    t.string   "tel",                          null: false
     t.integer  "postal_code",                  null: false
     t.string   "address_1",                    null: false
     t.string   "address_2",                    null: false

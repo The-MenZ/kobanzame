@@ -7,7 +7,7 @@
     <div class="col col-sm-3 col-xs-6 ">
       <div class="panel panel-default">
         <div class="panel-body text-center">
-          <%= link_to image_tag(product.design.design_file, :border => '0', :size => '127x127', :style => 'object-fit: cover'), product %>
+          <%= link_to image_tag(product.design.design_file.thumb, :border => '0', :size => '127x127', :style => 'object-fit: cover'), product %>
         </div>
         <div class="panel-footer">
           <p>
