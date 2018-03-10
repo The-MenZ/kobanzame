@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   end
 
   resources :products
+  get '/my_products', to: 'products#my_index'
+  get '/my_products/:id', to: 'products#my_show'
   get 'top/index'
 
   get 'password_resets/new'
