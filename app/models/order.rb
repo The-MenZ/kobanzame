@@ -8,7 +8,7 @@
 #  title          :string(255)      not null
 #  comment        :text(65535)
 #  recipient_name :string(255)      not null
-#  tel            :integer          not null
+#  tel            :string(255)      not null
 #  postal_code    :integer          not null
 #  address_1      :string(255)      not null
 #  address_2      :string(255)      not null
@@ -35,6 +35,7 @@ class Order < ApplicationRecord
   # = Association
   belongs_to :user
   belongs_to :product
+  has_one :design, through: :product
 
   # = Validation
   # validates :title, presence: true, length: { maximum: 120 }
@@ -51,6 +52,14 @@ class Order < ApplicationRecord
 
   def can_cansel?
     ordered? || design_checking? || design_accepted? || work_stopped?
+  end
+
+  def design_image
+    self.design.design_file
+  end
+
+  def shipping_address
+    "〒#{postal_code} #{address_1} #{address_2} #{recipient_name} #{tel}"
   end
 
   # = Private method

@@ -1,0 +1,78 @@
+<h1>発注管理</h1>
+
+<ul class="nav nav-tabs">
+  <%= link_to '一覧', admin_orders_path %>
+</ul>
+<br>
+
+<table class="table" width="90%">
+  <tbody>
+    <tr>
+      <td colspan="2" class="active" style="text-align: center"><strong>発注内容</strong></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>発注日</strong></td>
+      <td><%= I18n.l @order.created_at %></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>発注名</strong></td>
+      <td><%= @order.title %></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>発注者</strong></td>
+      <td><%= @order.user.name %></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>発注時コメント</strong></td>
+      <td><%= @order.comment %></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>配送先</strong></td>
+      <td><%= @order.shipping_address %></td>
+    </tr>
+    <tr>
+      <%= form_for([:admin, @order]) do |f| %>
+        <td width="20%" class="active">
+          <strong>進捗</strong>
+          <%= f.submit '変更', class: 'btn btn-primary btn-sm' %>
+        </td>
+        <td>
+          <%= f.select :progress, Order.progresses_i18n.keys.map { |k| [Order.progresses_i18n[k], k] } %>
+        </td>
+      <% end %>
+    </tr>
+    <tr>
+      <td colspan="2" class="active" style="text-align: center"><strong>商品内容</strong></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>商品名</strong></td>
+      <td><%= @order.product.name %></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>値段</strong></td>
+      <td><%= @order.product.price %></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>販売状況</strong></td>
+      <td><%= @order.product.product_status_i18n %></td>
+    </tr>
+    <tr>
+      <td colspan="2" class="active" style="text-align: center"><strong>図面内容</strong></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active"><strong>製作者名</strong></td>
+      <td><%= User.find(@order.design.user_id).name %></td>
+    </tr>
+    <tr>
+      <td width="20%" class="active">
+        <strong>図面（プレビュー）</strong><br>
+        <a href="<%= @order.design_image %>" download="<%= @order.design.design_file_identifier %>">
+          <button type="button" class="btn btn-primary">図面ダウンロード</button>
+        </a>
+      </td>
+      <td>
+        <%= image_tag @order.design_image.thumb, :size => '255x255', :style => 'object-fit: cover' %>
+      </td>
+    </tr>
+  </tbody>
+<table>
