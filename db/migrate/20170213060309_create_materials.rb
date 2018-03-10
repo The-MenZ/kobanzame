@@ -6,9 +6,9 @@ class CreateMaterials < ActiveRecord::Migration[5.0]
       t.integer :status
       t.text :internal_comment
       t.text :external_comment
+      t.integer :active
       t.integer :created_user_id
       t.integer :updated_user_id
-      t.integer :active
 
       t.timestamps
     end

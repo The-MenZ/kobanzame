@@ -6,6 +6,9 @@
 #  user_id                  :integer          not null
 #  design_original_filename :string(255)      not null
 #  design_file              :string(255)      not null
+#  active                   :boolean
+#  created_user_id          :integer
+#  updated_user_id          :integer
 #  created_at               :datetime         not null
 #  updated_at               :datetime         not null
 #

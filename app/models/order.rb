@@ -2,19 +2,22 @@
 #
 # Table name: orders
 #
-#  id             :integer          not null, primary key
-#  user_id        :integer          not null
-#  product_id     :integer          not null
-#  title          :string(255)      not null
-#  comment        :text(65535)
-#  recipient_name :string(255)      not null
-#  tel            :string(255)      not null
-#  postal_code    :integer          not null
-#  address_1      :string(255)      not null
-#  address_2      :string(255)      not null
-#  progress       :integer          not null
-#  created_at     :datetime         not null
-#  updated_at     :datetime         not null
+#  id              :integer          not null, primary key
+#  user_id         :integer          not null
+#  product_id      :integer          not null
+#  title           :string(255)      not null
+#  comment         :text(65535)
+#  recipient_name  :string(255)      not null
+#  tel             :string(255)      not null
+#  postal_code     :integer          not null
+#  address_1       :string(255)      not null
+#  address_2       :string(255)      not null
+#  progress        :integer          not null
+#  active          :boolean
+#  created_user_id :integer
+#  updated_user_id :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 
 class Order < ApplicationRecord

@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 20180211115129) do
     t.integer  "user_id",                  null: false
     t.string   "design_original_filename", null: false
     t.string   "design_file",              null: false
+    t.boolean  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
@@ -26,26 +29,29 @@ ActiveRecord::Schema.define(version: 20180211115129) do
     t.integer  "status"
     t.text     "internal_comment", limit: 65535
     t.text     "external_comment", limit: 65535
+    t.integer  "active"
     t.integer  "created_user_id"
     t.integer  "updated_user_id"
-    t.integer  "active"
     t.datetime "created_at",                     null: false
     t.datetime "updated_at",                     null: false
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",                      null: false
-    t.integer  "product_id",                   null: false
-    t.string   "title",                        null: false
-    t.text     "comment",        limit: 65535
-    t.string   "recipient_name",               null: false
-    t.string   "tel",                          null: false
-    t.integer  "postal_code",                  null: false
-    t.string   "address_1",                    null: false
-    t.string   "address_2",                    null: false
-    t.integer  "progress",                     null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "user_id",                       null: false
+    t.integer  "product_id",                    null: false
+    t.string   "title",                         null: false
+    t.text     "comment",         limit: 65535
+    t.string   "recipient_name",                null: false
+    t.string   "tel",                           null: false
+    t.integer  "postal_code",                   null: false
+    t.string   "address_1",                     null: false
+    t.string   "address_2",                     null: false
+    t.integer  "progress",                      null: false
+    t.boolean  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -62,13 +68,16 @@ ActiveRecord::Schema.define(version: 20180211115129) do
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email"
     t.string   "name"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.string   "email"
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin",           default: false
+    t.integer  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
