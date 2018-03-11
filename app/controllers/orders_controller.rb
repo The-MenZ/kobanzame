@@ -6,19 +6,22 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @design = Design.new(design_params)
-    @design.user_id = current_user.id
-    @design.save
-    @order = Order.new(order_params)
-    @product = Product.new
-    @product.name = @order.title
-    @product.design_id = @design.id
-    @product.created_user_id = current_user.id
-    @product.updated_user_id = current_user.id
-    @product.save
-    @order.user_id = current_user.id
-    @order.product_id = @product.id
-    @order.save
+    product = Product.new(product_params)
+    design = Design.new(design_params)
+    material = Material.find(product.material_id)
+    design.enable_cut = material.enable_cut
+    design.print_type = material.class.print_types[material.print_type]
+    design.user_id = current_user.id
+    design.save
+    order = Order.new(order_params)
+    product.name = order.title
+    product.design_id = design.id
+    product.created_user_id = current_user.id
+    product.updated_user_id = current_user.id
+    product.save
+    order.user_id = current_user.id
+    order.product_id = product.id
+    order.save
   end
 
   def show
@@ -27,6 +30,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @design = Design.new
+    @product = Product.new
   end
 
   def update
@@ -46,6 +50,10 @@ class OrdersController < ApplicationController
     end
 
     def design_params
-      params.require(:design).permit(:design_file)
+      params.require(:design).permit(:name, :design_file)
+    end
+
+    def product_params
+      params.require(:product).permit(:material_id)
     end
 end

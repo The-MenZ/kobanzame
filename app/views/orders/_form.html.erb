@@ -11,40 +11,68 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_field :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :postal_code %><br>
-    <%= f.text_field :postal_code %>
-  </div>
-  <div class="field">
-    <%= f.label :recipient_name %><br>
-    <%= f.text_field :recipient_name %>
-  </div>
-  <div class="field">
-    <%= f.label :tel %><br>
-    <%= f.text_field :tel %>
-  </div>
-  <div class="field">
-    <%= f.label :address_1 %><br>
-    <%= f.text_field :address_1 %>
-  </div>
-  <div class="field">
-    <%= f.label :address_2 %><br>
-    <%= f.text_field :address_2 %>
-  </div>
-  <%= fields_for @design do |d| %>
-    <div class="field">
-      <%= d.label :design_file %><br>
-      <%= d.file_field :design_file %>
-    </div>
-  <% end %>
+  <table class="table" width="90%">
+    <tbody>
+      <tr>
+        <td colspan="2" class="active" style="text-align: center"><strong>注文名</strong></td>
+      </tr>
+      <tr>
+        <td><%= f.label :title %></td>
+        <td><%= f.text_field :title %></td>
+      </tr>
+      <%= fields_for @design do |d| %>
+        <tr>
+          <td colspan="2" class="active" style="text-align: center"><strong>設計図</strong></td>
+        </tr>
+        <tr>
+          <td><%= d.label :name %></td>
+          <td><%= d.text_field :name %></td>
+        </tr>
+        <tr>
+          <td><%= d.label :design_file %></td>
+          <td><%= d.file_field :design_file %></td>
+        </tr>
+      <% end %>
+      <%= fields_for @product do |p| %>
+        <tr>
+          <td colspan="2" class="active" style="text-align: center"><strong>素材</strong></td>
+        </tr>
+        <tr>
+          <td><%= p.label "素材" %></td>
+          <td>
+            <%= p.collection_select :material_id, Material.all, :id, :name %>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2" class="active" style="text-align: center"><strong>発送先</strong></td>
+      </tr>
+      <tr>
+        <td><%= f.label :comment %></td>
+        <td><%= f.text_field :comment %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :postal_code %></td>
+        <td><%= f.text_field :postal_code %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :recipient_name %></td>
+        <td><%= f.text_field :recipient_name %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :tel %></td>
+        <td><%= f.text_field :tel %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :address_1 %></td>
+        <td><%= f.text_field :address_1 %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :address_2 %></td>
+        <td><%= f.text_field :address_2 %></td>
+      </tr>
+    </tbody>
+  <table>
   <div class="actions">
     <%= f.submit %>
   </div>

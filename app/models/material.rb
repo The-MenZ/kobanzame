@@ -3,7 +3,7 @@
 # Table name: materials
 #
 #  id              :integer          not null, primary key
-#  type            :integer
+#  name            :string(255)
 #  description     :text(65535)
 #  enable_cut      :boolean          default(FALSE), not null
 #  print_type      :integer          not null
@@ -22,6 +22,12 @@ class Material < ApplicationRecord
     unavailable: 0,
     single_color: 10,
     tone_color: 20
+  }
+
+  enum provide_status: {
+    out_of_stock: 0,
+    sale: 10,
+    backorder: 20,
   }
 
   # = Association

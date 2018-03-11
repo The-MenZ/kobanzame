@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20180211115129) do
   end
 
   create_table "materials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "type"
+    t.string   "name"
     t.text     "description",     limit: 65535
     t.boolean  "enable_cut",                    default: false, null: false
     t.integer  "print_type",                                    null: false
