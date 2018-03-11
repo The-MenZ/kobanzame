@@ -51,16 +51,6 @@ class DesignsController < ApplicationController
     end
   end
 
-  # DELETE /designs/1
-  # DELETE /designs/1.json
-  def destroy
-    @designn.destroy
-    respond_to do |format|
-      format.html { redirect_to designs_url, notice: 'Design was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   # GET /my_designs
   # GET /my_designs.json
   def my_index
