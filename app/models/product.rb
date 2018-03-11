@@ -22,7 +22,7 @@
 class Product < ApplicationRecord
 
   # = Module & Configure
-  enum product_status: {
+  enum sale_status: {
     private_sale: 0,
     public_sale: 10,
     sale_stopped: 20
@@ -34,7 +34,7 @@ class Product < ApplicationRecord
 
   # = Callback
   before_validation do
-    self.product_status ||= :private_sale
+    self.sale_status ||= :private_sale
     self.description ||= ''
     self.price ||= calculate_price
     self.active ||= true

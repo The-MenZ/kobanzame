@@ -36,6 +36,11 @@ class Order < ApplicationRecord
     canceled: 900,
   }
 
+  enum shipping_type: {
+    japanpost: 0,
+    yamato: 1,
+  }
+
   # = Association
   belongs_to :user
   belongs_to :product
@@ -50,6 +55,7 @@ class Order < ApplicationRecord
   # = Callback
   before_validation do
     self.progress ||= :ordered
+    self.shipping_type ||= :japanpost
   end
 
   # = Instance method
