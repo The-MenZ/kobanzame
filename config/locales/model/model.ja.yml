@@ -38,3 +38,12 @@ ja:
         private_sale: 製作者限定販売
         public_sale: 一般販売
         sale_stopped: 販売停止
+    material:
+      print_type:
+        unavailable: 不可
+        single_color: 単色のみ
+        tone_color: 階調付き
+      provide_status:
+        discontinued: 販売終了
+        sale: 販売中
+        backorder: 入荷待ち

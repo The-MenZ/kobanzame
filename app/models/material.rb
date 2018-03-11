@@ -25,7 +25,7 @@ class Material < ApplicationRecord
   }
 
   enum provide_status: {
-    out_of_stock: 0,
+    discontinued: 0,
     sale: 10,
     backorder: 20,
   }
