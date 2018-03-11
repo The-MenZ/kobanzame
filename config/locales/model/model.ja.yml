@@ -34,7 +34,7 @@ ja:
         japanpost: ゆうパック
         yamato: ヤマト宅急便
     product:
-      product_status:
+      sale_status:
         private_sale: 製作者限定販売
         public_sale: 一般販売
         sale_stopped: 販売停止
