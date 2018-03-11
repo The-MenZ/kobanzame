@@ -1,7 +1,7 @@
 class CreateMaterials < ActiveRecord::Migration[5.0]
   def change
     create_table :materials do |t|
-      t.integer :material_type
+      t.string :name
       t.text :description
       t.boolean :enable_cut, null: false, default: false
       t.integer :print_type, null: false

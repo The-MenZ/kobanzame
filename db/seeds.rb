@@ -6,16 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Material.create([
-  {material_type: 101, description: "アクリル(透明) 1mm", enable_cut: true, print_type: :unavailable, price: 800, provide_status: 10, active: true},
-  {material_type: 102, description: "アクリル(透明) 2mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
-  {material_type: 103, description: "アクリル(透明) 3mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
-  {material_type: 104, description: "アクリル(透明) 4mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
-  {material_type: 105, description: "アクリル(透明) 5mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
-  {material_type: 201, description: "アガチス 1mm", enable_cut: true, print_type: :unavailable, price: 500, provide_status: 10, active: true},
-  {material_type: 202, description: "アガチス 2mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
-  {material_type: 203, description: "アガチス 3mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
-  {material_type: 204, description: "アガチス 4mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
-  {material_type: 205, description: "アガチス 5mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "アクリル(透明) 1mm", description: "アクリル(透明) 1mm", enable_cut: true, print_type: :unavailable, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 2mm", description: "アクリル(透明) 2mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 3mm", description: "アクリル(透明) 3mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 4mm", description: "アクリル(透明) 4mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 5mm", description: "アクリル(透明) 5mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アガチス 1mm", description: "アガチス 1mm", enable_cut: true, print_type: :unavailable, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 2mm", description: "アガチス 2mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 3mm", description: "アガチス 3mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 4mm", description: "アガチス 4mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 5mm", description: "アガチス 5mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
 ])
 
 User.create(
