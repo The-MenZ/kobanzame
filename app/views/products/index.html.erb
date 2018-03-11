@@ -11,15 +11,10 @@
         </div>
           <table class="table" border="0">
             <tbody>
-              <tr><th><%= product.name %></th></tr>
+              <tr><th><%= product.name %></th><th></th></tr>
               <tr><th>価格</th><th>￥<%= product.price %></th></tr>
             </tbody>
           </table>
-        <div class="panel-footer">
-          <div class="text-center">
-            <%= link_to "購入", new_order_path, class: "btn btn-primary" %>
-          </div>
-        </div>
       </div>
     </div>
   <% end %>
