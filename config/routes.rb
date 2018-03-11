@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :orders
+    resources :materials
   end
 
   resources :products
@@ -12,7 +13,6 @@ Rails.application.routes.draw do
 
   get 'password_resets/edit'
 
-  resources :materials
   resources :orders
   get 'users/new'
   resources :users
