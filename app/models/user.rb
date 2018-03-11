@@ -3,13 +3,16 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  email           :string(255)
 #  name            :string(255)
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
 #  password_digest :string(255)
 #  remember_digest :string(255)
 #  admin           :boolean          default(FALSE)
+#  email           :string(255)
+#  active          :integer
+#  created_user_id :integer
+#  updated_user_id :integer
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
 #
 # Indexes
 #

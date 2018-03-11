@@ -13,47 +13,45 @@
 ActiveRecord::Schema.define(version: 20180211115129) do
 
   create_table "designs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",                  null: false
-    t.string   "design_original_filename", null: false
-    t.string   "design_file",              null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "user_id",                                  null: false
+    t.string   "name",                                     null: false
+    t.boolean  "enable_cut",               default: false, null: false
+    t.integer  "print_type",                               null: false
+    t.string   "design_original_filename",                 null: false
+    t.string   "design_file",                              null: false
+    t.boolean  "active",                   default: false, null: false
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "materials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "content_type"
-    t.text     "content_value",    limit: 65535
-    t.integer  "status"
-    t.text     "internal_comment", limit: 65535
-    t.text     "external_comment", limit: 65535
+    t.integer  "type"
+    t.text     "description",     limit: 65535
+    t.boolean  "enable_cut",                    default: false, null: false
+    t.integer  "print_type",                                    null: false
+    t.integer  "price"
+    t.integer  "provide_status",                                null: false
+    t.integer  "active"
     t.integer  "created_user_id"
     t.integer  "updated_user_id"
-    t.integer  "active"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
   end
 
   create_table "orders", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",                      null: false
-    t.integer  "product_id",                   null: false
-    t.string   "title",                        null: false
-    t.text     "comment",        limit: 65535
-    t.string   "recipient_name",               null: false
-    t.string   "tel",                          null: false
-    t.integer  "postal_code",                  null: false
-    t.string   "address_1",                    null: false
-    t.string   "address_2",                    null: false
-    t.integer  "progress",                     null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
-  end
-
-  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "design_id"
-    t.string   "name"
-    t.text     "description",     limit: 65535
-    t.integer  "price"
-    t.integer  "product_status"
+    t.integer  "user_id",                       null: false
+    t.integer  "product_id",                    null: false
+    t.string   "title",                         null: false
+    t.text     "comment",         limit: 65535
+    t.string   "recipient_name",                null: false
+    t.string   "tel",                           null: false
+    t.integer  "postal_code",                   null: false
+    t.string   "address_1",                     null: false
+    t.string   "address_2",                     null: false
+    t.integer  "shipping_type",                 null: false
+    t.integer  "progress",                      null: false
     t.boolean  "active"
     t.integer  "created_user_id"
     t.integer  "updated_user_id"
@@ -61,14 +59,34 @@ ActiveRecord::Schema.define(version: 20180211115129) do
     t.datetime "updated_at",                    null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "email"
+  create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "design_id"
+    t.integer  "material_id"
     t.string   "name"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.text     "description",             limit: 65535
+    t.string   "image_original_filename"
+    t.string   "image"
+    t.string   "url"
+    t.integer  "price"
+    t.integer  "sale_status"
+    t.boolean  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+  end
+
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name"
+    t.string   "email"
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin",           default: false
+    t.integer  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
