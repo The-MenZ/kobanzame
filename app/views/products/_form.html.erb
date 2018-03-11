@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :material_id %>
+    <%= f.number_field :material_id %>
+  </div>
+
+  <div class="field">
     <%= f.label :name %>
     <%= f.text_field :name %>
   </div>
@@ -27,13 +32,18 @@
   </div>
 
   <div class="field">
+    <%= f.label :url %>
+    <%= f.text_field :url %>
+  </div>
+
+  <div class="field">
     <%= f.label :price %>
     <%= f.number_field :price %>
   </div>
 
   <div class="field">
-    <%= f.label :product_status %>
-    <%= f.number_field :product_status %>
+    <%= f.label :sale_status %>
+    <%= f.number_field :sale_status %>
   </div>
 
   <div class="field">
