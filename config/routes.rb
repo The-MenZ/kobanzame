@@ -8,14 +8,16 @@ Rails.application.routes.draw do
   get '/my_products/:id', to: 'products#my_show'
   get 'top/index'
 
-  get 'password_resets/new'
-
-  get 'password_resets/edit'
+  resources :designs
+  get '/my_designs', to: 'designs#my_index'
 
   resources :materials
   resources :orders
   get 'users/new'
   resources :users
+
+  get 'password_resets/new'
+  get 'password_resets/edit'
 
   root 'top#index'
 

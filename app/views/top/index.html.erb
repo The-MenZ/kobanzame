@@ -13,10 +13,18 @@
     <div class="panel panel-default">
       <div class="panel-body text-center">
         <%= image_tag product.design.design_file.thumb, :size => '127x127', :style => 'object-fit: cover' %>
+        <table class="table" border="0">
+          <tbody>
+            <tr><th><%= product.name %></th></tr>
+            <tr><th>価格</th><th>￥<%= product.price %></th></tr>
+          </tbody>
+        </table>
       </div>
       <div class="panel-footer">
         <p>
-          <%= product.description %>
+          <div class="text-center">
+            <%= link_to "購入", new_order_path, class: "btn btn-primary" %>
+          </div>
         </p>
       </div>
     </div>

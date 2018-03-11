@@ -64,7 +64,7 @@ class DesignsController < ApplicationController
   # GET /my_designs
   # GET /my_designs.json
   def my_index
-    @designs = Design.joins(:design).where(designs: {user_id: current_user.id})
+    @designs = Design.where(user_id: current_user.id)
     render 'my_index'
   end
 
