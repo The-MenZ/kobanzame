@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   resources :designs
   get '/my_designs', to: 'designs#my_index'
-  get '/my_designs/:id', to: 'designs#my_show'
 
   resources :materials
   resources :orders
