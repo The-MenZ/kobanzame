@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :admin do
     resources :orders
+    resources :materials
   end
 
   resources :products
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
   resources :designs
   get '/my_designs', to: 'designs#my_index'
 
-  resources :materials
   resources :orders
   get 'users/new'
   resources :users
