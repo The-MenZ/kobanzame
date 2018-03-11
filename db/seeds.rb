@@ -16,6 +16,8 @@ Material.create([
   {name: "アガチス 3mm", description: "アガチス 3mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
   {name: "アガチス 4mm", description: "アガチス 4mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
   {name: "アガチス 5mm", description: "アガチス 5mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "コルクコースター（四角）", description: "コルク製のコースター", enable_cut: false, print_type: :single_color, price: 200, provide_status: 10, active: true},
+  {name: "コルクコースター（丸）", description: "コルク製のコースター", enable_cut: false, print_type: :single_color, price: 200, provide_status: 10, active: true},
 ])
 
 User.create(
