@@ -4,9 +4,12 @@
 #
 #  id                       :integer          not null, primary key
 #  user_id                  :integer          not null
+#  name                     :string(255)      not null
+#  enable_cut               :boolean          default(FALSE), not null
+#  print_type               :integer          not null
 #  design_original_filename :string(255)      not null
 #  design_file              :string(255)      not null
-#  active                   :boolean
+#  active                   :boolean          default(FALSE), not null
 #  created_user_id          :integer
 #  updated_user_id          :integer
 #  created_at               :datetime         not null

@@ -12,6 +12,7 @@
 #  postal_code     :integer          not null
 #  address_1       :string(255)      not null
 #  address_2       :string(255)      not null
+#  shipping_type   :integer          not null
 #  progress        :integer          not null
 #  active          :boolean
 #  created_user_id :integer
