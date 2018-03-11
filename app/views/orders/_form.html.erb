@@ -14,11 +14,15 @@
   <table class="table" width="90%">
     <tbody>
       <tr>
-        <td colspan="2" class="active" style="text-align: center"><strong>注文名</strong></td>
+        <td colspan="2" class="active" style="text-align: center"><strong>注文について</strong></td>
       </tr>
       <tr>
         <td><%= f.label :title %></td>
         <td><%= f.text_field :title %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :comment %></td>
+        <td><%= f.text_field :comment %></td>
       </tr>
       <%= fields_for @design do |d| %>
         <tr>
@@ -29,7 +33,7 @@
           <td><%= d.text_field :name %></td>
         </tr>
         <tr>
-          <td><%= d.label :design_file %></td>
+          <td><%= d.label :design_file %>※Adobe Illustrator形式</td>
           <td><%= d.file_field :design_file %></td>
         </tr>
       <% end %>
@@ -46,10 +50,6 @@
       <% end %>
       <tr>
         <td colspan="2" class="active" style="text-align: center"><strong>発送先</strong></td>
-      </tr>
-      <tr>
-        <td><%= f.label :comment %></td>
-        <td><%= f.text_field :comment %></td>
       </tr>
       <tr>
         <td><%= f.label :postal_code %></td>
