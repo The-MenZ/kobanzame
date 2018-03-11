@@ -17,4 +17,20 @@
 #
 
 class Material < ApplicationRecord
+  # = Module & Configure
+  enum print_type: {
+    unavailable: 0,
+    single_color: 10,
+    tone_color: 20
+  }
+
+  # = Association
+  has_many :designs
+  has_many :products
+
+  # = Callback
+
+
+  # = Instance method
+
 end
