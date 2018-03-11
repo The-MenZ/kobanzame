@@ -5,9 +5,22 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Material.create([
+  {name: "アクリル(透明) 1mm", description: "アクリル(透明) 1mm", enable_cut: true, print_type: :unavailable, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 2mm", description: "アクリル(透明) 2mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 3mm", description: "アクリル(透明) 3mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 4mm", description: "アクリル(透明) 4mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アクリル(透明) 5mm", description: "アクリル(透明) 5mm", enable_cut: true, print_type: :single_color, price: 800, provide_status: 10, active: true},
+  {name: "アガチス 1mm", description: "アガチス 1mm", enable_cut: true, print_type: :unavailable, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 2mm", description: "アガチス 2mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 3mm", description: "アガチス 3mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 4mm", description: "アガチス 4mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+  {name: "アガチス 5mm", description: "アガチス 5mm", enable_cut: true, print_type: :tone_color, price: 500, provide_status: 10, active: true},
+])
+
 User.create(
-  name: "ishizuka_genta",
-  email: "ishizuka_genta@cyberagent.co.jp",
+  name: "hogehoge",
+  email: "hoge@example.com",
   password: "asdfasdf",
   password_confirmation: "asdfasdf",
   admin: true

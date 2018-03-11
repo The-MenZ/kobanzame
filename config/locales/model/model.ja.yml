@@ -14,7 +14,8 @@ ja:
         address_2: 番地、建物名
         progress: 進捗
       design:
-        design_file: 図面
+        name: 設計図名
+        design_file: 設計図ファイル
 
   enums:
     order:
@@ -29,6 +30,9 @@ ja:
         ship_preparing: 発送準備中
         shipped: 発送完了
         canceled: キャンセル
+      shipping_type:
+        japanpost: ゆうパック
+        yamato: ヤマト宅急便
     product:
       product_status:
         private_sale: 製作者限定販売
