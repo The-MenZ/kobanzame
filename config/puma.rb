@@ -15,6 +15,15 @@ port        ENV.fetch("PORT") { 3000 }
 #
 environment ENV.fetch("RAILS_ENV") { "development" }
 
+# Daemonize the server into the background. Highly suggest that
+# this be combined with "pidfile" and "stdout_redirect".
+#
+# The default is "false".
+#
+# daemonize
+# daemonize false
+daemonize true
+
 # Specifies the number of `workers` to boot in clustered mode.
 # Workers are forked webserver processes. If using threads and workers together
 # the concurrency of the application would be max `threads` * `workers`.
@@ -45,3 +54,30 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
+
+# Store the pid of the server in the file at "path".
+#
+# pidfile '/u/apps/lolcat/tmp/pids/puma.pid'
+pidfile "#{Dir.pwd}/tmp/pids/puma.pid"
+
+# Use "path" as the file to store the server info state. This is
+# used by "pumactl" to query and control the server.
+#
+# state_path '/u/apps/lolcat/tmp/pids/puma.state'
+state_path "#{Dir.pwd}/tmp/pids/puma.state"
+
+# === Cluster mode ===
+# How many worker processes to run.
+#
+# The default is "0".
+#
+#workers 2
+
+# Configure "min" to be the minimum number of threads to use to answer
+# requests and "max" the maximum.
+#
+# The default is "0, 16".
+#
+# threads 0, 16
+#threads 16, 16
+
