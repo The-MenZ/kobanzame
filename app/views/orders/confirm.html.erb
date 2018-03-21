@@ -1,15 +1,7 @@
-<%= form_for(@order, :html => { :multipart => true }, url: confirm_orders_path) do |f| %>
-  <% if @order.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+<h1>発注確認</h1>
+<p>発注確認しましょう！</p>
 
-      <ul>
-      <% @order.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_for(@order, :html => { :multipart => true }) do |f| %>
 
   <table class="table" width="90%">
     <tbody>
@@ -18,11 +10,13 @@
       </tr>
       <tr>
         <td><%= f.label :title %></td>
-        <td><%= f.text_field :title %></td>
+        <td><%= @order.title %></td>
+        <%= f.hidden_field :title %>
       </tr>
       <tr>
         <td><%= f.label :comment %></td>
-        <td><%= f.text_field :comment %></td>
+        <td><%= @order.comment %></td>
+        <%= f.hidden_field :comment %>
       </tr>
       <%= fields_for @design do |d| %>
         <tr>
@@ -30,11 +24,13 @@
         </tr>
         <tr>
           <td><%= d.label :name %></td>
-          <td><%= d.text_field :name %></td>
+          <td><%= @design.name %></td>
+          <%= d.hidden_field :name %>
         </tr>
         <tr>
-          <td><%= d.label :design_file %>※Adobe Illustrator形式</td>
-          <td><%= d.file_field :design_file %></td>
+          <td><%= d.label :design_file %></td>
+          <td><%= image_tag @design.design_file.thumb, :size => '255x255', :style => 'object-fit: cover' %></td>
+          <%= hidden_field_tag :"cache[design_file]", @design.design_file.cache_name %>
         </tr>
       <% end %>
       <%= fields_for @product do |p| %>
@@ -44,8 +40,9 @@
         <tr>
           <td><%= p.label "素材" %></td>
           <td>
-            <%= p.collection_select :material_id, Material.all, :id, :name %>
+            <%= Material.find(@product.material_id).name %>
           </td>
+          <%= p.hidden_field :material_id %>
         </tr>
       <% end %>
       <tr>
@@ -53,23 +50,28 @@
       </tr>
       <tr>
         <td><%= f.label :postal_code %></td>
-        <td><%= f.text_field :postal_code %></td>
+        <td><%= @order.postal_code %></td>
+        <%= f.hidden_field :postal_code %>
       </tr>
       <tr>
         <td><%= f.label :recipient_name %></td>
-        <td><%= f.text_field :recipient_name %></td>
+        <td><%= @order.recipient_name %></td>
+        <%= f.hidden_field :recipient_name %>
       </tr>
       <tr>
         <td><%= f.label :tel %></td>
-        <td><%= f.text_field :tel %></td>
+        <td><%= @order.tel %></td>
+        <%= f.hidden_field :tel %>
       </tr>
       <tr>
         <td><%= f.label :address_1 %></td>
-        <td><%= f.text_field :address_1 %></td>
+        <td><%= @order.address_1 %></td>
+        <%= f.hidden_field :address_1 %>
       </tr>
       <tr>
         <td><%= f.label :address_2 %></td>
-        <td><%= f.text_field :address_2 %></td>
+        <td><%= @order.address_2 %></td>
+        <%= f.hidden_field :address_2 %>
       </tr>
     </tbody>
   <table>

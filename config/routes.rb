@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   get 'password_resets/edit'
 
-  resources :orders
+  resources :orders do
+    collection do
+      post :confirm
+    end
+  end
   get 'users/new'
   resources :users
 

@@ -30,6 +30,7 @@ class Product < ApplicationRecord
 
   # = Association
   belongs_to :design
+  belongs_to :material
   has_many :order
 
   # = Callback

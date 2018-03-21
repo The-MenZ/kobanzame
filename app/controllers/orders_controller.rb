@@ -9,6 +9,7 @@ class OrdersController < ApplicationController
     product = Product.new(product_params)
     design = Design.new(design_params)
     material = Material.find(product.material_id)
+    design.design_file.retrieve_from_cache! params[:cache][:design_file]
     design.enable_cut = material.enable_cut
     design.print_type = material.class.print_types[material.print_type]
     design.user_id = current_user.id
@@ -31,6 +32,12 @@ class OrdersController < ApplicationController
     @order = Order.new
     @design = Design.new
     @product = Product.new
+  end
+
+  def confirm
+    @product = Product.new(product_params)
+    @design = Design.new(design_params)
+    @order = Order.new(order_params)
   end
 
   def update
