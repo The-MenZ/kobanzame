@@ -72,6 +72,13 @@ class Order < ApplicationRecord
     "〒#{postal_code} #{address_1} #{address_2} #{recipient_name} #{tel}"
   end
 
+  def self.technical_fee
+    # 工賃
+    # TODO:とりあえずスタブ
+    1000
+  end
+
+
   # = Private method
 
   private

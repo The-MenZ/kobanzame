@@ -3,6 +3,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
     create_table :users do |t|
       t.string :name
       t.string :email
+      t.string :omise_customer_id
       t.integer :active
       t.integer :created_user_id
       t.integer :updated_user_id

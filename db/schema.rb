@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180211115129) do
+ActiveRecord::Schema.define(version: 20180321155230) do
+
+  create_table "credit_card_payments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "purchase_id"
+    t.integer  "amount"
+    t.integer  "payment_status"
+    t.boolean  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "designs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                                  null: false
@@ -76,17 +87,29 @@ ActiveRecord::Schema.define(version: 20180211115129) do
     t.datetime "updated_at",                            null: false
   end
 
+  create_table "purchases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "order_id"
+    t.integer  "purchase_status"
+    t.boolean  "active"
+    t.integer  "created_user_id"
+    t.integer  "updated_user_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
     t.string   "remember_digest"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",             default: false
+    t.string   "omise_customer_id"
     t.integer  "active"
     t.integer  "created_user_id"
     t.integer  "updated_user_id"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

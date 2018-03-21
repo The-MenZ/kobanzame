@@ -9,12 +9,12 @@ class OrdersController < ApplicationController
     product = Product.new(product_params)
     design = Design.new(design_params)
     material = Material.find(product.material_id)
+    order = Order.new(order_params)
     design.design_file.retrieve_from_cache! params[:cache][:design_file]
     design.enable_cut = material.enable_cut
     design.print_type = material.class.print_types[material.print_type]
     design.user_id = current_user.id
     design.save
-    order = Order.new(order_params)
     product.name = order.title
     product.design_id = design.id
     product.created_user_id = current_user.id
@@ -23,6 +23,28 @@ class OrdersController < ApplicationController
     order.user_id = current_user.id
     order.product_id = product.id
     order.save
+    purchase = Purchase.new
+    purchase.user_id = current_user.id
+    purchase.order_id = current_user.id
+    purchase.save
+    ##### ここから決済 #####
+    # TODO:ログ、エラー処理
+    amount = material.price + Order.technical_fee
+    ccp = CreditCardPayment.new
+    ccp.purchase_id = purchase.id
+    ccp.amount = amount
+    ccp.payment_status = :charged
+    charge = Omise::Charge.create({
+      # fixme:料金計算はとりあえずシンプルに
+      # customer: current_user.omise_customer_id,
+      amount: amount,
+      currency: "jpy",
+      description: "Order-#{purchase.id}",
+      card: params[:omise_token]
+    })
+    purchase.purchase_status = :paied
+    purchase.save
+    ccp.save
   end
 
   def show
