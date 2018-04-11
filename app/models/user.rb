@@ -2,17 +2,18 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
-#  name            :string(255)
-#  password_digest :string(255)
-#  remember_digest :string(255)
-#  admin           :boolean          default(FALSE)
-#  email           :string(255)
-#  active          :integer
-#  created_user_id :integer
-#  updated_user_id :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id                :integer          not null, primary key
+#  name              :string(255)
+#  email             :string(255)
+#  password_digest   :string(255)
+#  remember_digest   :string(255)
+#  admin             :boolean          default(FALSE)
+#  omise_customer_id :string(255)
+#  active            :integer
+#  created_user_id   :integer
+#  updated_user_id   :integer
+#  created_at        :datetime         not null
+#  updated_at        :datetime         not null
 #
 # Indexes
 #
@@ -24,6 +25,7 @@ class User < ApplicationRecord
   has_many :orders
 
   before_save { self.email = email.downcase }
+  before_create { self.omise_customer_id ||= generate_omise_customer_id }
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -67,4 +69,7 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
+  def generate_omise_customer_id
+    'omise' + SecureRandom.hex
+  end
 end
