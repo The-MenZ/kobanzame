@@ -1,0 +1,179 @@
+<h1>発注確認</h1>
+<p>発注確認しましょう！</p>
+
+<%= form_for(@order, :html => { :multipart => true }) do |f| %>
+
+  <table class="table" width="90%">
+    <tbody>
+      <tr>
+        <td colspan="2" class="active" style="text-align: center"><strong>注文について</strong></td>
+      </tr>
+      <tr>
+        <td><%= f.label :title %></td>
+        <td><%= @order.title %></td>
+        <%= f.hidden_field :title %>
+      </tr>
+      <tr>
+        <td><%= f.label :comment %></td>
+        <td><%= @order.comment %></td>
+        <%= f.hidden_field :comment %>
+      </tr>
+      <%= fields_for @design do |d| %>
+        <tr>
+          <td colspan="2" class="active" style="text-align: center"><strong>設計図</strong></td>
+        </tr>
+        <tr>
+          <td><%= d.label :name %></td>
+          <td><%= @design.name %></td>
+          <%= d.hidden_field :name %>
+        </tr>
+        <tr>
+          <td><%= d.label :design_file %></td>
+          <td><%= image_tag @design.design_file.thumb, :size => '255x255', :style => 'object-fit: cover' %></td>
+          <%= hidden_field_tag :"cache[design_file]", @design.design_file.cache_name %>
+        </tr>
+      <% end %>
+      <%= fields_for @product do |p| %>
+        <tr>
+          <td colspan="2" class="active" style="text-align: center"><strong>素材</strong></td>
+        </tr>
+        <tr>
+          <td><%= p.label "素材" %></td>
+          <td>
+            <%= Material.find(@product.material_id).name %>
+          </td>
+          <%= p.hidden_field :material_id %>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2" class="active" style="text-align: center"><strong>発送先</strong></td>
+      </tr>
+      <tr>
+        <td><%= f.label :postal_code %></td>
+        <td><%= @order.postal_code %></td>
+        <%= f.hidden_field :postal_code %>
+      </tr>
+      <tr>
+        <td><%= f.label :recipient_name %></td>
+        <td><%= @order.recipient_name %></td>
+        <%= f.hidden_field :recipient_name %>
+      </tr>
+      <tr>
+        <td><%= f.label :tel %></td>
+        <td><%= @order.tel %></td>
+        <%= f.hidden_field :tel %>
+      </tr>
+      <tr>
+        <td><%= f.label :address_1 %></td>
+        <td><%= @order.address_1 %></td>
+        <%= f.hidden_field :address_1 %>
+      </tr>
+      <tr>
+        <td><%= f.label :address_2 %></td>
+        <td><%= @order.address_2 %></td>
+        <%= f.hidden_field :address_2 %>
+      </tr>
+    </tbody>
+  <table>
+  <h2>決済情報</h2>
+  <table class="table" width="90%">
+    <tbody>
+      <tr>
+        <td colspan="2" class="active" style="text-align: center"><strong>料金(税込)</strong></td>
+      </tr>
+      <tr>
+        <td>素材費</td>
+        <td><%= Material.find(@product.material_id).price.to_s(:delimited) %> 円</td>
+      </tr>
+      <tr>
+        <td>工賃</td>
+        <td><%= Order.technical_fee.to_s(:delimited) %> 円</td>
+      </tr>
+      <tr>
+        <th>合計金額</th>
+        <td><%= (Material.find(@product.material_id).price + Order.technical_fee).to_s(:delimited) %> 円</td>
+      </tr>
+      <tr>
+        <td colspan="2" class="active" style="text-align: center"><strong>クレジットカード情報</strong>※入力された情報はkobanzameサーバーには一切保存されません</td>
+      </tr>
+      <input type="hidden" name="omise_token">
+      <tr>
+        <td>名義</td>
+        <td><input type="text" data-omise="holder_name" autocomplete="off"></td>
+      </tr>
+      <tr>
+        <td>番号</td>
+        <td><input type="number" data-omise="number" autocomplete="off"></td>
+      </tr>
+      <tr>
+        <td>有効期限</td>
+        <td>
+          月：<input type="number" data-omise="expiration_month" size="4" autocomplete="off">
+          年：<input type="number" data-omise="expiration_year" size="8" autocomplete="off">
+        </td>
+      </tr>
+      <tr>
+        <td>セキュリティコード</td>
+        <td><input type="password" data-omise="security_code"></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script src="https://cdn.omise.co/omise.js"></script>
+<script>
+  Omise.setPublicKey("pkey_test_59r91ylxsqghe14t12j");
+</script>
+<script type="text/javascript">
+  $("#new_order").submit(function () {
+
+    var form = $(this);
+
+    // Disable the submit button to avoid repeated click.
+    form.find("input[type=submit]").prop("disabled", true);
+
+    // Serialize the form fields into a valid card object.
+    var card = {
+      "name": form.find("[data-omise=holder_name]").val(),
+      "number": form.find("[data-omise=number]").val(),
+      "expiration_month": form.find("[data-omise=expiration_month]").val(),
+      "expiration_year": form.find("[data-omise=expiration_year]").val(),
+      "security_code": form.find("[data-omise=security_code]").val()
+    };
+
+    // Send a request to create a token then trigger the callback function once
+    // a response is received from Omise.
+    //
+    // Note that the response could be an error and this needs to be handled within
+    // the callback.
+    Omise.createToken("card", card, function (statusCode, response) {
+      if (response.object == "error" || !response.card.security_code_check) {
+        // Display an error message.
+        var message_text = "SET YOUR SECURITY CODE CHECK FAILED MESSAGE";
+        if(response.object == "error") {
+          message_text = response.message;
+        }
+        $("#token_errors").html(message_text);
+
+        // Re-enable the submit button.
+        form.find("input[type=submit]").prop("disabled", false);
+      } else {
+        // Then fill the omise_token.
+        form.find("[name=omise_token]").val(response.id);
+
+        // Remove card number from form before submiting to server.
+        form.find("[data-omise=number]").val("");
+        form.find("[data-omise=security_code]").val("");
+
+        // submit token to server.
+        form.get(0).submit();
+      };
+    });
+
+    // Prevent the form from being submitted;
+    return false;
+
+  });
+</script>

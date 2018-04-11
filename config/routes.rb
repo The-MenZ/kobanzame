@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   resources :designs
   get '/my_designs', to: 'designs#my_index'
 
-  resources :orders
+  resources :orders do
+    collection do
+      post :confirm
+    end
+  end
   get 'users/new'
   resources :users
 
