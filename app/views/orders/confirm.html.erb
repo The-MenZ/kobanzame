@@ -29,7 +29,7 @@
         </tr>
         <tr>
           <td><%= d.label :design_file %></td>
-          <td><%= image_tag @design.design_file.thumb, :size => '255x255', :style => 'object-fit: cover' %></td>
+          <td><%= image_tag @design.design_file.thumb, :style => 'object-fit: cover' %></td>
           <%= hidden_field_tag :"cache[design_file]", @design.design_file.cache_name %>
         </tr>
       <% end %>
