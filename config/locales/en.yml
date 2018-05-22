@@ -20,4 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  view:
+    my_designs: "My Designs"
+    my_products: "My Products"
+    users_edit: "Update profile"
+

@@ -11,3 +11,8 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %z"
       short: "%y/%m/%d %H:%M"
     pm: 午後
+  view:
+    products: "製品達"
+    my_designs: "私のデザイン達"
+    my_products: "私の製品達"
+    users_edit: "プロフィールの編集"

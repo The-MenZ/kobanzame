@@ -93,6 +93,7 @@
         <th>合計金額</th>
         <td><%= (Material.find(@product.material_id).price + Order.technical_fee).to_s(:delimited) %> 円</td>
       </tr>
+<!--
       <tr>
         <td colspan="2" class="active" style="text-align: center"><strong>クレジットカード情報</strong>※入力された情報はkobanzameサーバーには一切保存されません</td>
       </tr>
@@ -116,6 +117,7 @@
         <td>セキュリティコード</td>
         <td><input type="password" data-omise="security_code"></td>
       </tr>
+-->
     </tbody>
   </table>
   <div class="actions">
@@ -126,6 +128,8 @@
 <script>
   Omise.setPublicKey("pkey_test_59r91ylxsqghe14t12j");
 </script>
+
+<!--
 <script type="text/javascript">
   $("#new_order").submit(function () {
 
@@ -177,3 +181,4 @@
 
   });
 </script>
+-->
