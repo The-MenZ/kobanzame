@@ -26,7 +26,7 @@ one:
   name: MyString
   description: MyText
   price: 1
-  product_status: 1
+  sale_status: 1
   active: false
   created_user_id: 
   updated_user_id: 1
@@ -36,7 +36,7 @@ two:
   name: MyString
   description: MyText
   price: 1
-  product_status: 1
+  sale_status: 1
   active: false
   created_user_id: 
   updated_user_id: 1
