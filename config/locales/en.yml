@@ -21,6 +21,7 @@
 
 en:
   view:
+    products: "Products"
     my_designs: "My Designs"
     my_products: "My Products"
     users_edit: "Update profile"
