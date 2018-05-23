@@ -16,3 +16,8 @@ ja:
     my_designs: "私のデザイン達"
     my_products: "私の製品達"
     users_edit: "プロフィールの編集"
+    admin:
+      users: "ユーザ管理"
+      materials: "素材管理"
+      products: "製品管理"
+      orders: "注文管理"

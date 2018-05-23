@@ -25,4 +25,9 @@ en:
     my_designs: "My Designs"
     my_products: "My Products"
     users_edit: "Update profile"
-
+    orders: "Orders"
+    admin:
+      users: "All users"
+      materials: "All materials"
+      products: "All products"
+      orders: "All Orders"
