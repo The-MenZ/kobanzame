@@ -1,10 +1,12 @@
-<h1>発注管理</h1>
+<h1><%= t('view.admin.orders') %></h1>
 
 <ul class="nav nav-tabs">
   <%= link_to '一覧', admin_orders_path %>
 </ul>
 <br>
 
+<!-- ここのform_forはtableタグの中に入れない -->
+<%= form_for([:admin, @order]) do |f| %>
 <table class="table" width="90%">
   <tbody>
     <tr>
@@ -31,15 +33,13 @@
       <td><%= @order.shipping_address %></td>
     </tr>
     <tr>
-      <%= form_for([:admin, @order]) do |f| %>
-        <td width="20%" class="active">
-          <strong>進捗</strong>
-          <%= f.submit '変更', class: 'btn btn-primary btn-sm' %>
-        </td>
-        <td>
-          <%= f.select :progress, Order.progresses_i18n.keys.map { |k| [Order.progresses_i18n[k], k] } %>
-        </td>
-      <% end %>
+      <td width="20%" class="active">
+        <strong>進捗</strong>
+        <%= f.submit '変更', class: 'btn btn-primary btn-sm' %>
+      </td>
+      <td>
+        <%= f.select :progress, Order.progresses_i18n.keys.map { |k| [Order.progresses_i18n[k], k] } %>
+      </td>
     </tr>
     <tr>
       <td colspan="2" class="active" style="text-align: center"><strong>商品内容</strong></td>
@@ -76,3 +76,4 @@
     </tr>
   </tbody>
 <table>
+<% end %>
